@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Location {
+  id            String   @id
+  name          String
+  address       String
+  hoursLabel    String
+  isOpenNow     Boolean  @default(true)
+  pickupEtaMins Int      @default(15)
+  taxRate       Float    @default(0.0825)
+  imageUrl      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  availability  ItemAvailability[]
+  orders        Order[]
+}
+
+model Item {
+  id          String   @id
+  name        String
+  description String
+  imageUrl    String
+  category    String
+  tags        String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  availability ItemAvailability[]
+  orderItems   OrderItem[]
+}
+
+model ItemAvailability {
+  id         String   @id @default(cuid())
+  locationId String
+  itemId     String
+  priceCents Int
+  isActive   Boolean  @default(true)
+  updatedAt  DateTime @updatedAt
+
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  item     Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([locationId, itemId])
+}
+
+model Order {
+  id                  String   @id
+  status              String
+  locationId          String
+  pickupMode          String
+  scheduledPickupTime DateTime?
+  occasion            String?
+  pickupLabel         String
+  subtotalCents       Int
+  taxCents            Int
+  totalCents          Int
+  customerName        String
+  customerEmail       String
+  customerPhone       String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  location   Location    @relation(fields: [locationId], references: [id])
+  orderItems OrderItem[]
+}
+
+model OrderItem {
+  id             String @id @default(cuid())
+  orderId        String
+  itemId         String
+  nameSnapshot   String
+  quantity       Int
+  unitPriceCents Int
+  lineTotalCents Int
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  item  Item  @relation(fields: [itemId], references: [id])
+}

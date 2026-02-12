@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TextStyle } from 'react-native';
+import { theme } from '../../utils/theme';
 
 type Props = {
   title: string;
@@ -11,9 +12,11 @@ export function SectionHeader({ title, style }: Props) {
 
 const styles = StyleSheet.create({
   title: {
-    marginBottom: 12,
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#4A2F1D',
+    marginBottom: 14,
+    fontSize: 34,
+    lineHeight: 38,
+    fontWeight: '800',
+    letterSpacing: -0.4,
+    color: theme.colors.ink,
   },
 });

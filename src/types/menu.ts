@@ -1,9 +1,21 @@
-export type BakeryTag = 'popular' | 'seasonal' | 'vegan' | 'new';
+export type BakeryTag =
+  | 'popular'
+  | 'seasonal'
+  | 'vegan'
+  | 'new'
+  | 'bestSeller'
+  | 'weekend';
+
+export type MenuCategory = 'Pastries' | 'Bread' | 'Brunch' | 'Coffee' | 'Gifts';
 
 export type Location = {
   id: string;
   name: string;
   address: string;
+  hoursLabel: string;
+  isOpenNow: boolean;
+  pickupEtaMins: number;
+  image: string;
 };
 
 export type BakeryItem = {
@@ -12,7 +24,7 @@ export type BakeryItem = {
   description: string;
   price: number;
   image: string;
-  category: string;
+  category: MenuCategory;
   locationIds: string[];
   tags?: BakeryTag[];
 };

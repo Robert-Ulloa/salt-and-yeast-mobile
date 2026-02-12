@@ -1,0 +1,41 @@
+export const theme = {
+  colors: {
+    bg: '#F3F8EE',
+    bgSoft: '#FCFFF8',
+    ink: '#183128',
+    cocoa: '#1F5A46',
+    crust: '#E7C84D',
+    crustDeep: '#B68D17',
+    pine: '#2D7A59',
+    pineDark: '#1A4D38',
+    mint: '#7BC797',
+    berry: '#A73E37',
+    cream: '#F6FFE9',
+    card: '#FFFFFF',
+    border: 'rgba(31, 90, 70, 0.15)',
+    muted: 'rgba(24, 49, 40, 0.62)',
+    mutedLight: 'rgba(24, 49, 40, 0.45)',
+  },
+  radius: {
+    sm: 12,
+    md: 20,
+    lg: 28,
+    xl: 36,
+  },
+  shadow: {
+    card: {
+      shadowColor: '#11402E',
+      shadowOpacity: 0.14,
+      shadowRadius: 14,
+      shadowOffset: { width: 0, height: 6 },
+      elevation: 3,
+    },
+    button: {
+      shadowColor: '#B68D17',
+      shadowOpacity: 0.22,
+      shadowRadius: 12,
+      shadowOffset: { width: 0, height: 6 },
+      elevation: 2,
+    },
+  },
+};

@@ -1,0 +1,80 @@
+export const seedLocations = [
+  {
+    id: 'downtown',
+    name: 'Downtown Austin',
+    address: '401 Congress Ave, Austin, TX 78701',
+    hoursLabel: 'Mon-Sun · 7:00 AM - 8:00 PM',
+    isOpenNow: true,
+    pickupEtaMins: 12,
+    taxRate: 0.0825,
+    imageUrl: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'soco',
+    name: 'South Congress',
+    address: '1608 S Congress Ave, Austin, TX 78704',
+    hoursLabel: 'Mon-Sun · 7:30 AM - 7:30 PM',
+    isOpenNow: true,
+    pickupEtaMins: 16,
+    taxRate: 0.0825,
+    imageUrl: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'east',
+    name: 'East Austin',
+    address: '1209 E 7th St, Austin, TX 78702',
+    hoursLabel: 'Mon-Sun · 8:00 AM - 6:00 PM',
+    isOpenNow: false,
+    pickupEtaMins: 20,
+    taxRate: 0.0825,
+    imageUrl: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80',
+  },
+] as const;
+
+export const seedItems = [
+  {
+    id: 'croissant-butter',
+    name: 'Cultured Butter Croissant',
+    description: 'Laminated daily with Normandy-style cultured butter.',
+    imageUrl: 'https://images.unsplash.com/photo-1555507036-ab794f4afe5a?auto=format&fit=crop&w=800&q=80',
+    category: 'Pastries',
+    tags: ['popular', 'bestSeller'],
+  },
+  {
+    id: 'country-loaf',
+    name: 'Country Sourdough',
+    description: '48-hour fermented loaf with a caramelized crust.',
+    imageUrl: 'https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=800&q=80',
+    category: 'Bread',
+    tags: ['bestSeller'],
+  },
+  {
+    id: 'oat-latte',
+    name: 'Oat Milk Latte',
+    description: 'Double shot espresso with micro-foamed oat milk.',
+    imageUrl: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80',
+    category: 'Coffee',
+    tags: ['vegan', 'popular'],
+  },
+  {
+    id: 'gift-box-brunch',
+    name: 'Weekend Brunch Box',
+    description: 'Pastries, brioche rolls, and seasonal jam.',
+    imageUrl: 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80',
+    category: 'Gifts',
+    tags: ['weekend'],
+  },
+] as const;
+
+export const seedAvailability = [
+  { locationId: 'downtown', itemId: 'croissant-butter', priceCents: 450 },
+  { locationId: 'soco', itemId: 'croissant-butter', priceCents: 450 },
+  { locationId: 'east', itemId: 'croissant-butter', priceCents: 450 },
+  { locationId: 'downtown', itemId: 'country-loaf', priceCents: 900 },
+  { locationId: 'east', itemId: 'country-loaf', priceCents: 900 },
+  { locationId: 'downtown', itemId: 'oat-latte', priceCents: 550 },
+  { locationId: 'soco', itemId: 'oat-latte', priceCents: 550 },
+  { locationId: 'east', itemId: 'oat-latte', priceCents: 550 },
+  { locationId: 'downtown', itemId: 'gift-box-brunch', priceCents: 3800 },
+  { locationId: 'soco', itemId: 'gift-box-brunch', priceCents: 3800 },
+] as const;

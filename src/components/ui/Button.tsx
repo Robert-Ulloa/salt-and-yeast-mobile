@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, ViewStyle, TextStyle } from 'react-native';
+import { theme } from '../../utils/theme';
 
 type Variant = 'primary' | 'secondary' | 'outline';
 
@@ -10,15 +11,19 @@ type Props = {
 };
 
 const containerByVariant: Record<Variant, ViewStyle> = {
-  primary: { backgroundColor: '#D8A25E' },
-  secondary: { backgroundColor: '#4A2F1D' },
-  outline: { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: 'rgba(74,47,29,0.2)' },
+  primary: { backgroundColor: theme.colors.crust },
+  secondary: { backgroundColor: theme.colors.cocoa },
+  outline: {
+    backgroundColor: theme.colors.bgSoft,
+    borderWidth: 1.5,
+    borderColor: theme.colors.border,
+  },
 };
 
 const textByVariant: Record<Variant, TextStyle> = {
-  primary: { color: '#4A2F1D' },
-  secondary: { color: '#FFF7ED' },
-  outline: { color: '#4A2F1D' },
+  primary: { color: theme.colors.ink },
+  secondary: { color: theme.colors.cream },
+  outline: { color: theme.colors.ink },
 };
 
 export function Button({ label, onPress, variant = 'primary', disabled = false }: Props) {
@@ -26,7 +31,13 @@ export function Button({ label, onPress, variant = 'primary', disabled = false }
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={[styles.container, containerByVariant[variant], disabled && styles.disabled]}
+      style={({ pressed }) => [
+        styles.container,
+        containerByVariant[variant],
+        variant === 'primary' ? theme.shadow.button : null,
+        pressed ? styles.pressed : null,
+        disabled ? styles.disabled : null,
+      ]}
     >
       <Text style={[styles.text, textByVariant[variant]]}>{label}</Text>
     </Pressable>
@@ -35,16 +46,20 @@ export function Button({ label, onPress, variant = 'primary', disabled = false }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 12,
+    borderRadius: 999,
     paddingHorizontal: 20,
     paddingVertical: 14,
   },
   text: {
     textAlign: 'center',
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 17,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  pressed: {
+    transform: [{ scale: 0.98 }],
   },
   disabled: {
-    opacity: 0.5,
+    opacity: 0.45,
   },
 });
